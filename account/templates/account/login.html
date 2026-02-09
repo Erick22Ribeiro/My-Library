@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'account/css/login.css' %}">
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Wix+Madefor+Text:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet">
+
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section class="login">
+
+        <div class="esquerda">
+            
+        </div>
+
+        <div class="direita">
+
+            <form class="formulario-login" action="#" method="post">
+                {% csrf_token %}
+
+                <h2>Login</h2>
+
+                <input type="email" name="email" placeholder="E-mail" />
+                <input type="password" name="senha" placeholder="Senha" />
+                <input type="submit" value="Entrar" />
+
+                <div class="opc-cadastro">
+                    <p>Não possui cadastro? </p>
+                    <a href="{% url 'account:cadastro' %}" title="Cadastro">Cadastre-se</a>
+                </div>
+                
+
+            </form>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>

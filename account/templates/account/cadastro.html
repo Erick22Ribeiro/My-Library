@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'account/css/cadastro.css' %}">
+    <title>Cadastro</title>
+</head>
+<body>
+
+    <section class="cadastro">
+
+            <form class="formulario-cadastro" action="#" method="post">
+                {% csrf_token %}
+
+                <h2>Cadastro</h2>
+
+                <input type="text" name="primeiro_nome" placeholder="Primeiro nome" />
+                <input type="text" name="sobrenome" placeholder="Sobrenome" />
+                <input type="text" name="email" placeholder="E-mail" />
+                <input type="password" name="senha" placeholder="Senha" />
+                <input type="submit" value="Criar" />
+
+                <div class="opc-cadastro">
+                    <p>Já possui cadastro? </p>
+                    <a href="{% url 'account:login' %}" title="Cadastro">Faça login</a>
+                </div>
+                
+            </form>
+
+    </section>
+    
+
+
+</body>
+</html>
