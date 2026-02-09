@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
-    <h1>home</h1>
+
+    <h1>Buscar livros</h1>
+
+    <form method="get">
+        <input type="text" name="q" value="{{ query }}" placeholder="Digite um livro">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <hr>
+
+    {% for livro in livros %}
+    <div style="margin-bottom: 10px;">
+        <strong>{{ livro.title }}</strong><br>
+        Autor: {{ livro.author }}<br>
+        Ano: {{ livro.year }}<br>
+        ISBN: {{ livro.isbn }}
+    </div>
+    {% empty %}
+    {% if query %}
+    <p>Nenhum resultado.</p>
+    {% endif %}
+    {% endfor %}
+
 
 </body>
+
 </html>
