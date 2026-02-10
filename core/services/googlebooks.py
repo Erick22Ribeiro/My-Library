@@ -7,7 +7,6 @@ def procurar_livros_g(query):
 
     params = {
         'q': query,
-        'maxResults': 10,
     }
 
     response = requests.get(url, params = params, timeout=5)
@@ -22,7 +21,7 @@ def procurar_livros_g(query):
 
         livros.append({
             'titulo': info.get('title'),
-            'autor': info.get('authors'),
+            'autor': info.get('authors', ['Autor desconhecido'])[0],
             'ano': info.get('publishedDate'),
             'capa': info.get('imageLinks', {}).get('thumbnail'),
         })
