@@ -18,18 +18,41 @@
 
     <hr>
 
-    {% for livro in livros %}
-    <div style="margin-bottom: 10px;">
+    <!-- {% for livro in livros %}
+    <div>
         <strong>{{ livro.title }}</strong><br>
         Autor: {{ livro.author }}<br>
         Ano: {{ livro.year }}<br>
         ISBN: {{ livro.isbn }}
+        {% if livro.capa %}
+        <img src="{{ livro.capa }}" alt="Capa do livro">
+        {% else %}
+        <p>Sem capa</p>
+        {% endif %}
     </div>
     {% empty %}
     {% if query %}
     <p>Nenhum resultado.</p>
     {% endif %}
+    {% endfor %} -->
+
+    <hr>
+
+    {% for livro in livros %}
+    <div style="margin-bottom: 20px;">
+        <h3>{{ livro.titulo }}</h3>
+        <p>{{ livro.autor }} - {{ livro.ano }}</p>
+
+        {% if livro.capa %}
+        <img src="{{ livro.capa }}">
+        {% endif %}
+    </div>
+    {% empty %}
+    <p>Nenhum resultado</p>
     {% endfor %}
+
+
+
 
 
 </body>
