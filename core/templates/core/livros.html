@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Livros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .search-box {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .search-box input {
+            padding: 8px;
+            width: 250px;
+        }
+
+        .search-box button {
+            padding: 8px 12px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .card img {
+            width: 128px;
+            height: 192px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .titulo {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .autor {
+            font-size: 12px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Google Books</h2>
+
+<div class="search-box">
+    <form method="GET">
+        <input 
+            type="text" 
+            name="q" 
+            placeholder="Digite o nome do livro..."
+            value="{{ query|default:'' }}"
+            required
+        >
+        <button type="submit">Buscar</button>
+    </form>
+</div>
+
+{% if livros %}
+    <div class="grid">
+        {% for livro in livros %}
+            <div class="card">
+                <img 
+                    src="{{ livro.capa }}" 
+                    alt="Capa"
+                    loading="lazy"
+                >
+                <div class="titulo">{{ livro.titulo }}</div>
+                <div class="autor">{{ livro.autor }}</div>
+                <div class="autor">{{ livro.ano }}</div>
+            </div>
+        {% endfor %}
+    </div>
+{% elif query %}
+    <p style="text-align:center;">Nenhum resultado encontrado.</p>
+{% endif %}
+
+</body>
+</html>

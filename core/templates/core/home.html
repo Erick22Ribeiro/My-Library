@@ -166,7 +166,7 @@
                     {% if livros %}
                     <span class="results-count"><span>{{ livros|length }}</span> results found</span>
                     {% else %}
-                    <span class="results-count"><span>124</span> results found</span>
+                    <span class="results-count"><span>0</span> results found</span>
                     {% endif %}
                     <div class="view-toggle">
                         <button class="view-btn active">
@@ -196,7 +196,7 @@
 
                         <div class="book-cover-inner">
                             {% if livro.capa %}
-                            <img src="{{ livro.capa }}" alt="{{ livro.titulo }}">
+                            <img src="{{ livro.capa }}  width="128" height="192" loading="lazy" alt="{{ livro.titulo }}">
                             {% else %}
                             <div class="cover-text">
                                 <div class="cover-title">BOOK COVER</div>
@@ -252,320 +252,15 @@
                 {% endfor %}
             </div>
             {% else %}
-            <!-- Example Static Books -->
-            <div class="books-grid">
-                <!-- Book 1 -->
-                <div class="book-card">
-                    <div class="book-cover-wrapper color-1">
-                        <span class="book-badge badge-new">NEW</span>
-                        <div class="book-cover-inner">
-                            <div class="cover-text">
-                                <div class="cover-title">BOOK COVER</div>
-                                <div class="cover-subtitle">Lorem ipsum dolor<br>sit amet consectetur</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <div class="book-category">FICTION</div>
-                        <h3 class="book-title">The Echoes of Silence</h3>
-                        <p class="book-author">Eleanor P. Vance</p>
-                        <div class="book-footer">
-                            <div class="book-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star empty"></i>
-                                </div>
-                                <span class="rating-value">4.2</span>
-                            </div>
-                            <div class="book-price-cart">
-                                <div class="book-price">
-                                    <span class="price-current">$24.99</span>
-                                </div>
-                                <button class="cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 2 -->
-                <div class="book-card">
-                    <div class="book-cover-wrapper color-2">
-                        <span class="book-badge badge-sale">SALE</span>
-                        <div class="book-cover-inner">
-                            <div class="cover-text">
-                                <div class="cover-title" style="color: white;">Minimal</div>
-                                <div class="cover-subtitle" style="color: rgba(255,255,255,0.8); margin-top: 30px;">cover</div>
-                                <div class="cover-subtitle" style="color: rgba(255,255,255,0.6); position: absolute; bottom: 20px; left: 20px; right: 20px;">Minimal layout</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <div class="book-category">MYSTERY</div>
-                        <h3 class="book-title">Shadow of the Alchemist</h3>
-                        <p class="book-author">J.K. Sterling</p>
-                        <div class="book-footer">
-                            <div class="book-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                </div>
-                                <span class="rating-value">5.0</span>
-                            </div>
-                            <div class="book-price-cart">
-                                <div class="book-price">
-                                    <span class="price-current">$18.50</span>
-                                    <span class="price-old">$32.00</span>
-                                </div>
-                                <button class="cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 3 -->
-                <div class="book-card">
-                    <div class="book-cover-wrapper color-3">
-                        <div class="book-cover-inner">
-                            <div class="cover-text">
-                                <div class="cover-title" style="color: white;">MINIMAL</div>
-                                <div class="cover-subtitle" style="color: rgba(255,255,255,0.7); margin-top: 15px;">COVER</div>
-                                <div class="cover-subtitle" style="color: rgba(255,255,255,0.5); position: absolute; bottom: 20px; left: 20px; right: 20px;">Simplicity goes a long way</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <div class="book-category">NON-FICTION</div>
-                        <h3 class="book-title">Beyond the Digital Horizon</h3>
-                        <p class="book-author">Dr. Elena Kostic</p>
-                        <div class="book-footer">
-                            <div class="book-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star empty"></i>
-                                </div>
-                                <span class="rating-value">4.7</span>
-                            </div>
-                            <div class="book-price-cart">
-                                <div class="book-price">
-                                    <span class="price-current">$32.00</span>
-                                </div>
-                                <button class="cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 4 -->
-                <div class="book-card">
-                    <div class="book-cover-wrapper color-4">
-                        <span class="book-badge badge-bestseller">BESTSELLER</span>
-                        <div class="book-cover-inner">
-                            <div class="cover-text">
-                                <div class="cover-title">BOOK COVER</div>
-                                <div class="cover-subtitle" style="margin-top: 15px;">Minimal<br>Background</div>
-                                <div class="cover-subtitle" style="position: absolute; bottom: 20px; left: 20px; right: 20px; font-size: 7px;">Lorem Ipsum<br>Dolor sit amet</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <div class="book-category">BIOGRAPHY</div>
-                        <h3 class="book-title">A Life Uncharted</h3>
-                        <p class="book-author">Samuel L. Thorne</p>
-                        <div class="book-footer">
-                            <div class="book-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                </div>
-                                <span class="rating-value">4.8</span>
-                            </div>
-                            <div class="book-price-cart">
-                                <div class="book-price">
-                                    <span class="price-current">$21.99</span>
-                                </div>
-                                <button class="cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 5 -->
-                <div class="book-card">
-                    <div class="book-cover-wrapper color-5">
-                        <div class="book-cover-inner">
-                            <div class="cover-text">
-                                <div class="cover-title">BOOK</div>
-                                <div class="cover-title">COVER</div>
-                                <div class="cover-subtitle" style="margin-top: 20px;">Lorem Ipsum<br>Dolor sit amet<br>Consectetur</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <div class="book-category">SCI-FI</div>
-                        <h3 class="book-title">Circuit Breakers</h3>
-                        <p class="book-author">Raya Mendez</p>
-                        <div class="book-footer">
-                            <div class="book-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star empty"></i>
-                                    <i class="fas fa-star star empty"></i>
-                                </div>
-                                <span class="rating-value">3.5</span>
-                            </div>
-                            <div class="book-price-cart">
-                                <div class="book-price">
-                                    <span class="price-current">$15.75</span>
-                                </div>
-                                <button class="cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 6 -->
-                <div class="book-card">
-                    <div class="book-cover-wrapper color-6">
-                        <div class="book-cover-inner">
-                            <div class="cover-text">
-                                <div class="cover-title" style="color: white; font-size: 16px;">Minimal clean</div>
-                                <div class="cover-title" style="color: white; font-size: 22px; margin-top: 10px;">WRITEBOOK</div>
-                                <div class="cover-subtitle" style="color: rgba(255,255,255,0.7); position: absolute; bottom: 20px; left: 20px; right: 20px; font-size: 7px;">BOOK WRITING AND WRITE WORLD</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <div class="book-category">FICTION</div>
-                        <h3 class="book-title">The Weaver's Tale</h3>
-                        <p class="book-author">Isabella Moreno</p>
-                        <div class="book-footer">
-                            <div class="book-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star empty"></i>
-                                </div>
-                                <span class="rating-value">4.1</span>
-                            </div>
-                            <div class="book-price-cart">
-                                <div class="book-price">
-                                    <span class="price-current">$19.00</span>
-                                </div>
-                                <button class="cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 7 -->
-                <div class="book-card">
-                    <div class="book-cover-wrapper color-3">
-                        <span class="book-badge badge-new">NEW</span>
-                        <div class="book-cover-inner">
-                            <div class="cover-text">
-                                <div class="cover-title">BOOK & MAGAZINE PLANNER</div>
-                                <div class="cover-title" style="font-size: 18px; margin-top: 15px;">Lorem Ipsum</div>
-                                <div class="cover-subtitle" style="margin-top: 15px;">Lorem ipsum dolor<br>sit amet consectetur</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <div class="book-category">NON-FICTION</div>
-                        <h3 class="book-title">Quantum State Mechanics</h3>
-                        <p class="book-author">Prof. Arthur Wells</p>
-                        <div class="book-footer">
-                            <div class="book-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                </div>
-                                <span class="rating-value">4.9</span>
-                            </div>
-                            <div class="book-price-cart">
-                                <div class="book-price">
-                                    <span class="price-current">$55.00</span>
-                                </div>
-                                <button class="cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Book 8 -->
-                <div class="book-card">
-                    <div class="book-cover-wrapper color-7">
-                        <div class="book-cover-inner">
-                            <div class="cover-text">
-                                <div class="cover-title" style="color: white; font-size: 16px;">NATURAL</div>
-                                <div class="cover-title" style="color: white; font-size: 20px; margin-top: 8px;">COVER</div>
-                                <div class="cover-subtitle" style="color: rgba(255,255,255,0.7); margin-top: 15px; font-size: 8px;">Lorem ipsum dolor sit<br>amet consectetur adipiscing<br>elit sed do eiusmod</div>
-                                <div class="cover-subtitle" style="color: rgba(255,255,255,0.5); position: absolute; bottom: 20px; left: 20px; right: 20px; font-size: 7px;">Lorem ipsum dolor</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-info">
-                        <div class="book-category">SCI-FI</div>
-                        <h3 class="book-title">Vector Point Delta</h3>
-                        <p class="book-author">Liam J. Cross</p>
-                        <div class="book-footer">
-                            <div class="book-rating">
-                                <div class="stars">
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star"></i>
-                                    <i class="fas fa-star star empty"></i>
-                                    <i class="fas fa-star star empty"></i>
-                                </div>
-                                <span class="rating-value">3.2</span>
-                            </div>
-                            <div class="book-price-cart">
-                                <div class="book-price">
-                                    <span class="price-current">$12.50</span>
-                                </div>
-                                <button class="cart-btn">
-                                    <i class="fas fa-shopping-cart"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="empty-state" style="text-align: center; padding: 80px 20px;">
+                <i class="fas fa-search" style="font-size: 64px; color: #d1d5db; margin-bottom: 20px;"></i>
+                <h3 style="font-size: 20px; color: #6b7280; margin-bottom: 10px; font-weight: 600;">Nenhum livro encontrado</h3>
+                <p style="font-size: 15px; color: #9ca3af;">Tente buscar por outro título, autor ou ISBN</p>
             </div>
             {% endif %}
 
             <!-- Pagination -->
+            {% if livros %}
             <div class="pagination">
                 <button class="page-btn">
                     <i class="fas fa-chevron-left"></i>
@@ -579,6 +274,7 @@
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
+            {% endif %}
 
             <!-- Footer -->
             <footer class="footer">

@@ -395,34 +395,35 @@ body {
 /* ==================== BOOKS GRID ==================== */
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 22px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 24px;
     margin-bottom: 40px;
 }
 
 .book-card {
     background: white;
-    border-radius: 16px;
+    border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     border: 1px solid #f3f4f6;
+    display: flex;
+    flex-direction: column;
 }
 
 .book-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     border-color: #e5e7eb;
 }
 
-/* Book Cover */
+/* Book Cover - Proporção vertical 2:3 */
 .book-cover-wrapper {
     position: relative;
-    padding: 26px;
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    padding-top: 150%; /* Proporção 2:3 (altura = 150% da largura) */
+    background: #f3f4f6;
+    overflow: hidden;
 }
 
 .book-cover-wrapper.color-1 {
@@ -455,10 +456,10 @@ body {
 
 .book-badge {
     position: absolute;
-    top: 14px;
-    left: 14px;
-    padding: 5px 11px;
-    border-radius: 6px;
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    border-radius: 4px;
     font-size: 9px;
     font-weight: 700;
     text-transform: uppercase;
@@ -482,95 +483,86 @@ body {
 }
 
 .book-cover-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: #faf9f7;
-    border-radius: 3px;
-    padding: 26px 20px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.06),
-        0 10px 20px rgba(0, 0, 0, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-    position: relative;
-}
-
-.book-cover-inner::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 8px;
-    background: linear-gradient(to right, rgba(0,0,0,0.08), transparent);
+    justify-content: center;
 }
 
 .book-cover-inner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 2px;
+    display: block;
 }
 
 .cover-text {
     text-align: center;
-    position: relative;
+    padding: 20px 16px;
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.95);
 }
 
 .cover-title {
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 12px;
+    font-weight: 700;
     color: #1f2937;
-    letter-spacing: 0.3px;
-    line-height: 1.3;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    text-transform: uppercase;
 }
 
 .cover-subtitle {
-    font-size: 9px;
+    font-size: 10px;
     color: #6b7280;
     line-height: 1.4;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.3px;
     margin-top: 8px;
 }
 
 /* Book Info */
 .book-info {
-    padding: 18px 18px 20px;
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .book-category {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 700;
     color: #4f7cff;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .book-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: #1f2937;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     line-height: 1.35;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    min-height: 38px;
 }
 
 .book-author {
-    font-size: 13px;
+    font-size: 12px;
     color: #6b7280;
-    margin-bottom: 14px;
+    margin-bottom: 12px;
     font-weight: 400;
 }
 
@@ -580,12 +572,13 @@ body {
     justify-content: space-between;
     padding-top: 12px;
     border-top: 1px solid #f3f4f6;
+    margin-top: auto;
 }
 
 .book-rating {
     display: flex;
     align-items: center;
-    gap: 7px;
+    gap: 6px;
 }
 
 .stars {
@@ -595,7 +588,7 @@ body {
 
 .star {
     color: #fbbf24;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .star.empty {
@@ -603,7 +596,7 @@ body {
 }
 
 .rating-value {
-    font-size: 12px;
+    font-size: 11px;
     color: #6b7280;
     font-weight: 600;
 }
@@ -611,31 +604,31 @@ body {
 .book-price-cart {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .book-price {
     display: flex;
     align-items: baseline;
-    gap: 6px;
+    gap: 5px;
 }
 
 .price-current {
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 700;
     color: #1f2937;
 }
 
 .price-old {
-    font-size: 12px;
+    font-size: 11px;
     color: #9ca3af;
     text-decoration: line-through;
     font-weight: 500;
 }
 
 .cart-btn {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border-radius: 8px;
     border: none;
     background: #4f7cff;
@@ -645,7 +638,7 @@ body {
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
-    font-size: 14px;
+    font-size: 13px;
     box-shadow: 0 2px 4px rgba(79, 124, 255, 0.2);
 }
 
@@ -731,7 +724,7 @@ body {
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1400px) {
     .books-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
 }
 
@@ -745,13 +738,7 @@ body {
     }
 
     .books-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 900px) {
-    .books-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 }
 
@@ -790,7 +777,7 @@ body {
     }
 
     .books-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
         gap: 16px;
     }
 
@@ -807,7 +794,8 @@ body {
 
 @media (max-width: 480px) {
     .books-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
     }
 
     .filter-select {
