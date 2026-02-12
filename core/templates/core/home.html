@@ -23,72 +23,43 @@
         </div>
 
         <nav class="sidebar-nav">
-            <div class="nav-section">
-                <h3 class="nav-section-title">DISCOVERY</h3>
-                <ul class="nav-list">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-check-circle"></i>
-                            <span>Browse All</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-calendar"></i>
-                            <span>New Releases</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Best Sellers</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-tag"></i>
-                            <span>On Sale</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <div class="nav-section">
+        <h3 class="nav-section-title">DESCOBRIR</h3>
+        <ul class="nav-list">
+            <li class="nav-item active">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-search"></i>
+                    <span>Buscar</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 
-            <div class="nav-section">
-                <h3 class="nav-section-title">COLLECTIONS</h3>
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-trophy"></i>
-                            <span>Award Winners</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-star"></i>
-                            <span>Staff Picks</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <div class="nav-section">
+        <h3 class="nav-section-title">COLEÇÕES</h3>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-book"></i>
+                    <span>Livros</span>
+                </a>
+            </li>
+        </ul>
+    </div>
 
-            <div class="nav-section">
-                <h3 class="nav-section-title">ACCOUNT</h3>
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-heart"></i>
-                            <span>Wishlist</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-cog"></i>
-                            <span>Settings</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    <div class="nav-section">
+        <h3 class="nav-section-title">CONTA</h3>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Configurações</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
 
         <div class="sidebar-footer">
             <div class="user-profile">
@@ -96,8 +67,8 @@
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="user-info">
-                    <div class="user-name">Alex Morgan</div>
-                    <div class="user-role">Store Manager</div>
+                    <div class="user-name">{{ user.first_name}}</div>
+                    <div class="user-role"></div>
                 </div>
             </div>
         </div>
@@ -128,7 +99,8 @@
 
         <!-- Content -->
         <div class="container">
-            <div class="filters-bar">
+
+            <!-- <div class="filters-bar">
                 <div class="filters-left">
                     <div class="filter-group">
                         <label class="filter-label">GENRE</label>
@@ -177,13 +149,14 @@
                         </button>
                     </div>
                 </div>
-            </div>
+
+            </div> -->
 
             {% if livros %}
             <div class="books-grid">
                 {% for livro in livros %}
                 <div class="book-card">
-                    <div class="book-cover-wrapper color-{{ forloop.counter|divisibleby:7|add:forloop.counter }}">
+                    <div class="book-cover-wrapper">
                         {% if forloop.counter == 1 %}
                         <span class="book-badge badge-new">NEW</span>
                         {% elif forloop.counter == 2 %}
@@ -196,7 +169,7 @@
 
                         <div class="book-cover-inner">
                             {% if livro.capa %}
-                            <img src="{{ livro.capa }}  width="128" height="192" loading="lazy" alt="{{ livro.titulo }}">
+                            <img src="{{ livro.capa }}">
                             {% else %}
                             <div class="cover-text">
                                 <div class="cover-title">BOOK COVER</div>
@@ -208,9 +181,10 @@
 
                     <div class="book-info">
                         <div class="book-category">
-                            {% cycle 'FICTION' 'MYSTERY' 'NON-FICTION' 'BIOGRAPHY' 'SCI-FI' %}
+                            {{ livro.categoria }}
                         </div>
                         <h3 class="book-title">{{ livro.titulo }}</h3>
+                        <p class="num-pages">Páginas - {{ livro.num_paginas }}</p>
                         <p class="book-author">{{ livro.autor }}</p>
 
                         <div class="book-footer">

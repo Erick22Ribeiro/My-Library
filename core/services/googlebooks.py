@@ -25,6 +25,7 @@ def procurar_livros_g(query):
             'ano': info.get('publishedDate'),
             'capa': info.get('imageLinks', {}).get('thumbnail'),
             'categoria': info.get('categories', ['Categoria desconhecida'])[0],
+            'num_paginas': info.get('pageCount'),
         })
 
     return livros
