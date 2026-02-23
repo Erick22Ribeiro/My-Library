@@ -16,7 +16,7 @@ def home(request):
     return render(request, "core/home.html", {"livros": livros, "query": query})
 
 
-def livros(request):
+def buscar(request):
 
     query = request.GET.get("q")
 
@@ -26,4 +26,8 @@ def livros(request):
         #livros = procurar_livros(query)  #API Open Library
         livros = procurar_livros_g(query)  #API Google Books
 
-    return render(request, "core/livros.html", {"livros": livros, "query": query})
+    return render(request, "core/buscar.html", {"livros": livros, "query": query})
+
+def livros(request):
+
+    return render(request, "core/livros.html")

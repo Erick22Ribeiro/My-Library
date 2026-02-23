@@ -26,8 +26,8 @@
             <div class="nav-section">
                 <h3 class="nav-section-title">DESCOBRIR</h3>
                 <ul class="nav-list">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link">
+                    <li class="nav-item">
+                        <a href="{% url 'buscar'%}" class="nav-link">
                             <i class="fas fa-search"></i>
                             <span>Buscar</span>
                         </a>
@@ -66,7 +66,7 @@
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="user-info">
-                    <div class="user-name">{{ user.first_name}}</div>
+                    <div class="user-name">{{ user.first_name }}</div>
                     <div class="user-role"></div>
                 </div>
             </div>
@@ -77,81 +77,21 @@
     <div class="main-content">
         <!-- Header -->
         <header class="header">
-            <div class="search-container">
+
+            <!-- <div class="search-container">
                 <form method="get" class="search-form">
                     <i class="fas fa-search search-icon"></i>
                     <input type="text" name="q" value="{{ query }}" placeholder="Search by title, author, or ISBN...">
                     <button type="submit">Buscar</button>
                 </form>
-            </div>
-
-            <!-- <div class="header-actions">
-                <button class="notification-btn">
-                    <i class="fas fa-bell"></i>
-                </button>
-                <button class="add-book-btn">
-                    <i class="fas fa-plus"></i>
-                    <span>Add Book</span>
-                </button>
             </div> -->
+
         </header>
 
         <!-- Content -->
         <div class="container">
 
-            <!-- <div class="filters-bar">
-                <div class="filters-left">
-                    <div class="filter-group">
-                        <label class="filter-label">GENRE</label>
-                        <select class="filter-select">
-                            <option>All Genres</option>
-                            <option>Fiction</option>
-                            <option>Mystery</option>
-                            <option>Non-Fiction</option>
-                            <option>Biography</option>
-                            <option>Sci-Fi</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-group">
-                        <label class="filter-label">PRICE RANGE</label>
-                        <select class="filter-select">
-                            <option>All Prices</option>
-                            <option>$0 - $20</option>
-                            <option>$20 - $50</option>
-                            <option>$50+</option>
-                        </select>
-                    </div>
-
-                    <div class="filter-group">
-                        <label class="filter-label">RATING</label>
-                        <select class="filter-select">
-                            <option>Any Rating</option>
-                            <option>4+ Stars</option>
-                            <option>3+ Stars</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="filters-right">
-                    {% if livros %}
-                    <span class="results-count"><span>{{ livros|length }}</span> results found</span>
-                    {% else %}
-                    <span class="results-count"><span>0</span> results found</span>
-                    {% endif %}
-                    <div class="view-toggle">
-                        <button class="view-btn active">
-                            <i class="fas fa-th"></i>
-                        </button>
-                        <button class="view-btn">
-                            <i class="fas fa-list"></i>
-                        </button>
-                    </div>
-                </div>
-
-            </div> -->
-
-            {% if livros %}
+            <!-- {% if livros %}
             <div class="books-grid">
                 {% for livro in livros %}
                 <div class="book-card">
@@ -230,7 +170,7 @@
                 <h3 style="font-size: 20px; color: #6b7280; margin-bottom: 10px; font-weight: 600;">Nenhum livro encontrado</h3>
                 <p style="font-size: 15px; color: #9ca3af;">Tente buscar por outro título, autor ou ISBN</p>
             </div>
-            {% endif %}
+            {% endif %} -->
 
             <!-- Pagination -->
             {% if livros %}
