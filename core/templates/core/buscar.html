@@ -23,25 +23,26 @@
         </div>
 
         <nav class="sidebar-nav">
+
             <div class="nav-section">
-                <h3 class="nav-section-title">DESCOBRIR</h3>
+                <h3 class="nav-section-title">COLEÇÕES</h3>
                 <ul class="nav-list">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-search"></i>
-                            <span>Buscar</span>
+                    <li class="nav-item">
+                        <a href="{% url 'home' %}" class="nav-link">
+                            <i class="fas fa-book"></i>
+                            <span>Livros</span>
                         </a>
                     </li>
                 </ul>
             </div>
 
             <div class="nav-section">
-                <h3 class="nav-section-title">COLEÇÕES</h3>
+                <h3 class="nav-section-title">DESCOBRIR</h3>
                 <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-book"></i>
-                            <span>Livros</span>
+                    <li class="nav-item active">
+                        <a href="{% url 'buscar' %}" class="nav-link">
+                            <i class="fas fa-search"></i>
+                            <span>Buscar</span>
                         </a>
                     </li>
                 </ul>
@@ -58,6 +59,7 @@
                     </li>
                 </ul>
             </div>
+
         </nav>
 
         <div class="sidebar-footer">
@@ -80,20 +82,12 @@
             <div class="search-container">
                 <form method="get" class="search-form">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" name="q" value="{{ query }}" placeholder="Search by title, author, or ISBN...">
+                    <input type="text" name="q" value="{{ query|default:'' }}"
+                        placeholder="Search by title, author, or ISBN...">
                     <button type="submit">Buscar</button>
                 </form>
             </div>
 
-            <!-- <div class="header-actions">
-                <button class="notification-btn">
-                    <i class="fas fa-bell"></i>
-                </button>
-                <button class="add-book-btn">
-                    <i class="fas fa-plus"></i>
-                    <span>Add Book</span>
-                </button>
-            </div> -->
         </header>
 
         <!-- Content -->
@@ -183,11 +177,12 @@
                             {{ livro.categoria }}
                         </div>
                         <h3 class="book-title">{{ livro.titulo }}</h3>
+                        <p class="book-year">Ano - {{ livro.ano }}</p>
                         <p class="num-pages">Páginas - {{ livro.num_paginas }}</p>
                         <p class="book-author">{{ livro.autor }}</p>
 
                         <div class="book-footer">
-                            <div class="book-rating">
+                            <!-- <div class="book-rating">
                                 <div class="stars">
                                     {% with rating=forloop.counter|divisibleby:3 %}
                                     {% if rating %}
@@ -206,9 +201,9 @@
                                     {% endwith %}
                                 </div>
                                 <span class="rating-value">{% cycle '4.2' '5.0' '4.7' '4.8' '3.5' '4.1' '4.9' '3.2' %}</span>
-                            </div>
+                            </div> -->
 
-                            <div class="book-price-cart">
+                            <!-- <div class="book-price-cart">
                                 <div class="book-price">
                                     <span class="price-current">${% cycle '24.99' '18.50' '32.00' '21.99' '15.75' '19.00' '55.00' '12.50' %}</span>
                                     {% if forloop.counter == 2 %}
@@ -218,7 +213,60 @@
                                 <button class="cart-btn">
                                     <i class="fas fa-shopping-cart"></i>
                                 </button>
+                            </div> -->
+
+                            <div class="botoes-livro">
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="titulo" value="{{ livro.titulo }}">
+                                    <input type="hidden" name="categoria" value="{{ livro.categoria }}">
+                                    <input type="hidden" name="autor" value="{{ livro.autor }}">
+                                    <input type="hidden" name="ano" value="{{ livro.ano }}">
+                                    <input type="hidden" name="paginas" value="{{ livro.num_paginas }}">
+                                    <input type="hidden" name="capa" value="{{ livro.capa }}">
+                                    <input type="hidden" name="tipo" value="quero">
+
+                                    <button class="btn quero">
+                                        <i class="fa-brands fa-readme"></i>
+                                    </button>
+
+                                </form>
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="titulo" value="{{ livro.titulo }}">
+                                    <input type="hidden" name="categoria" value="{{ livro.categoria }}">
+                                    <input type="hidden" name="autor" value="{{ livro.autor }}">
+                                    <input type="hidden" name="ano" value="{{ livro.ano }}">
+                                    <input type="hidden" name="paginas" value="{{ livro.num_paginas }}">
+                                    <input type="hidden" name="capa" value="{{ livro.capa }}">
+                                    <input type="hidden" name="categoria" value="comprado">
+
+                                    <button class="btn comprado">
+                                        <i class="fa-solid fa-sack-dollar"></i>
+                                    </button>
+
+                                </form>
+
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="titulo" value="{{ livro.titulo }}">
+                                    <input type="hidden" name="categoria" value="{{ livro.categoria }}">
+                                    <input type="hidden" name="autor" value="{{ livro.autor }}">
+                                    <input type="hidden" name="ano" value="{{ livro.ano }}">
+                                    <input type="hidden" name="paginas" value="{{ livro.num_paginas }}">
+                                    <input type="hidden" name="capa" value="{{ livro.capa }}">
+                                    <input type="hidden" name="categoria" value="lido">
+
+                                    <button class="btn lido">
+                                        <i class="fa-solid fa-check"></i>
+                                    </button>
+
+                                </form>
+
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -227,7 +275,8 @@
             {% else %}
             <div class="empty-state" style="text-align: center; padding: 80px 20px;">
                 <i class="fas fa-search" style="font-size: 64px; color: #d1d5db; margin-bottom: 20px;"></i>
-                <h3 style="font-size: 20px; color: #6b7280; margin-bottom: 10px; font-weight: 600;">Nenhum livro encontrado</h3>
+                <h3 style="font-size: 20px; color: #6b7280; margin-bottom: 10px; font-weight: 600;">Nenhum livro
+                    encontrado</h3>
                 <p style="font-size: 15px; color: #9ca3af;">Tente buscar por outro título, autor ou ISBN</p>
             </div>
             {% endif %}

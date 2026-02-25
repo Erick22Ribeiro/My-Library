@@ -23,25 +23,26 @@
         </div>
 
         <nav class="sidebar-nav">
+
             <div class="nav-section">
-                <h3 class="nav-section-title">DESCOBRIR</h3>
+                <h3 class="nav-section-title">COLEÇÕES</h3>
                 <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="{% url 'buscar'%}" class="nav-link">
-                            <i class="fas fa-search"></i>
-                            <span>Buscar</span>
+                    <li class="nav-item active">
+                        <a href="{% url 'home' %}" class="nav-link">
+                            <i class="fas fa-book"></i>
+                            <span>Livros</span>
                         </a>
                     </li>
                 </ul>
             </div>
 
             <div class="nav-section">
-                <h3 class="nav-section-title">COLEÇÕES</h3>
+                <h3 class="nav-section-title">DESCOBRIR</h3>
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-book"></i>
-                            <span>Livros</span>
+                        <a href="{% url 'buscar' %}" class="nav-link">
+                            <i class="fas fa-search"></i>
+                            <span>Buscar</span>
                         </a>
                     </li>
                 </ul>
@@ -58,6 +59,7 @@
                     </li>
                 </ul>
             </div>
+
         </nav>
 
         <div class="sidebar-footer">
@@ -66,7 +68,7 @@
                     <i class="fas fa-user"></i>
                 </div>
                 <div class="user-info">
-                    <div class="user-name">{{ user.first_name }}</div>
+                    <div class="user-name">{{ user.first_name}}</div>
                     <div class="user-role"></div>
                 </div>
             </div>
@@ -90,6 +92,16 @@
 
         <!-- Content -->
         <div class="container">
+
+            {% if livros %}
+
+            {% for livro in livros %}
+            <h1>{{ livro.titulo }}</h1>
+            <h1>{{ livro.tipo }}</h1>
+            {% endfor %}
+
+            {% else %}
+            {% endif %}
 
             <!-- {% if livros %}
             <div class="books-grid">
@@ -171,23 +183,6 @@
                 <p style="font-size: 15px; color: #9ca3af;">Tente buscar por outro título, autor ou ISBN</p>
             </div>
             {% endif %} -->
-
-            <!-- Pagination -->
-            {% if livros %}
-            <div class="pagination">
-                <button class="page-btn">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <span class="page-dots">...</span>
-                <button class="page-btn">12</button>
-                <button class="page-btn">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            {% endif %}
 
             <!-- Footer -->
             <footer class="footer">
