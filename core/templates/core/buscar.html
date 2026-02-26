@@ -241,7 +241,7 @@
                                     <input type="hidden" name="ano" value="{{ livro.ano }}">
                                     <input type="hidden" name="paginas" value="{{ livro.num_paginas }}">
                                     <input type="hidden" name="capa" value="{{ livro.capa }}">
-                                    <input type="hidden" name="categoria" value="comprado">
+                                    <input type="hidden" name="tipo" value="comprado">
 
                                     <button class="btn comprado">
                                         <i class="fa-solid fa-sack-dollar"></i>
@@ -257,7 +257,7 @@
                                     <input type="hidden" name="ano" value="{{ livro.ano }}">
                                     <input type="hidden" name="paginas" value="{{ livro.num_paginas }}">
                                     <input type="hidden" name="capa" value="{{ livro.capa }}">
-                                    <input type="hidden" name="categoria" value="lido">
+                                    <input type="hidden" name="tipo" value="lido">
 
                                     <button class="btn lido">
                                         <i class="fa-solid fa-check"></i>
@@ -298,15 +298,6 @@
             </div>
             {% endif %}
 
-            <!-- Footer -->
-            <footer class="footer">
-                <p>&copy; 2024 LuminaBooks Management System. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Support Desk</a>
-                </div>
-            </footer>
         </div>
     </div>
 </body>

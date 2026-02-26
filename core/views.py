@@ -8,8 +8,32 @@ def home(request):
 
     livros = Livro.objects.all()
 
+    livro_quero = Livro.objects.filter(tipo = 'quero')
+    livro_comprado = Livro.objects.filter(tipo = 'comprado')
+    livro_lido = Livro.objects.filter(tipo = 'lido')
+
+    if request.method == 'POST':
+
+        livro_id = request.POST.get('livro_id')
+        novo_tipo = request.POST.get('tipo')
+
+        livro = Livro.objects.get(id = livro_id)
+
+        if novo_tipo == 'remover':
+
+            livro.delete()
+
+        else:
+
+            livro.tipo = novo_tipo
+
+            livro.save()
+
     context = {
-        'livros': livros
+        'livros': livros,
+        'livros_quero': livro_quero,
+        'livros_comprado': livro_comprado,
+        'livros_lido': livro_lido,
     }
     
     return render(request, "core/home.html", context)
