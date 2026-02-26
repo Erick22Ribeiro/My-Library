@@ -16,12 +16,18 @@ def home(request):
 
         livro_id = request.POST.get('livro_id')
         novo_tipo = request.POST.get('tipo')
+        avaliacao = request.POST.get('avaliacao')
 
         livro = Livro.objects.get(id = livro_id)
 
         if novo_tipo == 'remover':
 
             livro.delete()
+
+        elif avaliacao is not None:
+
+            livro.avaliacao = int(avaliacao)
+            livro.save()
 
         else:
 

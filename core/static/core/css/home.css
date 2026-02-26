@@ -776,6 +776,64 @@ body {
 
 }
 
+/* AVALIAÇÃO */
+/* Star Rating */
+.star-form {
+    padding-top: 10px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.star-rating {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #d1d5db;           /* estrela vazia */
+    padding: 2px;
+    transition: color 0.15s, transform 0.15s;
+    line-height: 1;
+}
+
+.star-btn.filled {
+    color: #fbbf24;           /* estrela preenchida */
+}
+
+/* Hover: preenche até a estrela sob o cursor */
+.star-rating:hover .star-btn {
+    color: #fbbf24;
+}
+.star-rating .star-btn:hover ~ .star-btn {
+    color: #d1d5db;
+}
+
+.star-btn:hover {
+    transform: scale(1.2);
+}
+
+.avaliacao-label {
+    font-size: 11px;
+    color: #6b7280;
+    text-align: center;
+    font-weight: 600;
+}
+
+.avaliacao-label.sem-avaliacao {
+    color: #d1d5db;
+    font-weight: 400;
+}
+
+/* Botão remover */
+.remover {
+    background-color: #e74c3c;
+}
+
 /* ==================== RESPONSIVE ==================== */
 @media (max-width: 1400px) {
     .books-grid {

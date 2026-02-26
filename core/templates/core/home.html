@@ -35,9 +35,17 @@
             flex-shrink: 0;
         }
 
-        .shelf-icon.quero-icon   { background: linear-gradient(135deg, #3498db, #1a6faa); }
-        .shelf-icon.comprado-icon { background: linear-gradient(135deg, #e67e22, #b85e0c); }
-        .shelf-icon.lido-icon    { background: linear-gradient(135deg, #27ae60, #1a7a42); }
+        .shelf-icon.quero-icon {
+            background: linear-gradient(135deg, #3498db, #1a6faa);
+        }
+
+        .shelf-icon.comprado-icon {
+            background: linear-gradient(135deg, #e67e22, #b85e0c);
+        }
+
+        .shelf-icon.lido-icon {
+            background: linear-gradient(135deg, #27ae60, #1a7a42);
+        }
 
         .shelf-title-group {
             flex: 1;
@@ -64,9 +72,17 @@
             color: white;
         }
 
-        .shelf-count.quero-count   { background: #3498db; }
-        .shelf-count.comprado-count { background: #e67e22; }
-        .shelf-count.lido-count    { background: #27ae60; }
+        .shelf-count.quero-count {
+            background: #3498db;
+        }
+
+        .shelf-count.comprado-count {
+            background: #e67e22;
+        }
+
+        .shelf-count.lido-count {
+            background: #27ae60;
+        }
 
         /* Horizontal scroll shelf */
         .shelf-scroll-wrapper {
@@ -136,9 +152,18 @@
             border-radius: 2px;
             margin-top: 6px;
         }
-        .shelf-accent.quero   { background: #3498db; }
-        .shelf-accent.comprado { background: #e67e22; }
-        .shelf-accent.lido    { background: #27ae60; }
+
+        .shelf-accent.quero {
+            background: #3498db;
+        }
+
+        .shelf-accent.comprado {
+            background: #e67e22;
+        }
+
+        .shelf-accent.lido {
+            background: #27ae60;
+        }
     </style>
 </head>
 
@@ -276,7 +301,7 @@
                                             </button>
                                         </form>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -404,8 +429,37 @@
                                 <p class="book-year">Ano - {{ livro.ano }}</p>
                                 <p class="num-pages">Páginas - {{ livro.num_paginas }}</p>
                                 <p class="book-author">{{ livro.autor }}</p>
+
                                 <div class="book-footer">
-                                    <div class="botoes-livro">
+
+                                    <!-- Sistema de avaliação por estrelas -->
+                                    <form method="POST" class="star-form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="livro_id" value="{{ livro.id }}">
+                                        <input type="hidden" name="avaliacao" id="avaliacao-{{ livro.id }}" value="{{ livro.avaliacao|default:'' }}">
+
+                                        <div class="star-rating" data-livro="{{ livro.id }}">
+                                            {% for i in "12345" %}
+                                            <button type="submit"
+                                                class="star-btn {% if livro.avaliacao and forloop.counter <= livro.avaliacao %}filled{% endif %}"
+                                                data-value="{{ forloop.counter }}"
+                                                onclick="document.getElementById('avaliacao-{{ livro.id }}').value='{{ forloop.counter }}'"
+                                                title="{{ forloop.counter }} estrela{{ forloop.counter|pluralize:'s' }}">
+                                                <i class="fa-solid fa-star"></i>
+                                            </button>
+                                            {% endfor %}
+                                        </div>
+
+                                        {% if livro.avaliacao %}
+                                        <p class="avaliacao-label">{{ livro.avaliacao }}/5</p>
+                                        {% else %}
+                                        <p class="avaliacao-label sem-avaliacao">Sem avaliação</p>
+                                        {% endif %}
+
+                                    </form>
+
+                                    <!-- Botão remover -->
+                                    <div class="botoes-livro" style="margin-top: 8px;">
                                         <form method="POST">
                                             {% csrf_token %}
                                             <input type="hidden" name="livro_id" value="{{ livro.id }}">
@@ -415,7 +469,10 @@
                                             </button>
                                         </form>
                                     </div>
+
                                 </div>
+
+
                             </div>
                         </div>
                         {% endfor %}
